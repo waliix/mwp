@@ -1,0 +1,26 @@
+# WORDPRESS BEDROCK SUB-DIRECTORY
+RewriteEngine On
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
+# add a trailing slash to /wp-admin
+RewriteRule ^([_0-9a-zA-Z-]+/)?wp-admin$ $1wp-admin/ [R=301,L]
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+RewriteRule ^([_0-9a-zA-Z-]+/)?(wp-(content|admin|includes).*) wp/$2 [L]
+RewriteRule ^([_0-9a-zA-Z-]+/)?(.*\.php)$ wp/$2 [L]
+RewriteRule . index.php [L]
+
+# WORDPRESS BEDROCK SUB-DOMAIN
+RewriteEngine On
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
+# add a trailing slash to /wp-admin
+RewriteRule ^wp-admin$ wp-admin/ [R=301,L]
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+RewriteRule ^(wp-(content|admin|includes).*) wp/$1 [L]
+RewriteRule ^(.*\.php)$ wp/$1 [L]
+RewriteRule . index.php [L]
+#https://caddy.community/t/roots-io-bedrock-wordpress-sub-domain-sub-directory-caddy/3566
