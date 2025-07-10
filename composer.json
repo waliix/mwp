@@ -1,0 +1,44 @@
+{
+    "name": "waliix/mwp",
+    "description": "Master WP",
+    "type": "project",
+    "require": {
+        "php": ">=8.0",
+        "vlucas/phpdotenv": "^5.6",
+        "roots/wordpress": "^6.8",
+        "roots/wp-config": "^1.0",
+        "wpackagist-theme/twentytwentyfive": "^1.2"
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://wpackagist.org",
+            "only": ["wpackagist-plugin/*", "wpackagist-theme/*"]
+        }
+    ],
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Waliix\\Mwp\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Ali"
+        }
+    ],
+    "config": {
+        "allow-plugins": {
+            "roots/wordpress-core-installer": true,
+            "composer/installers": true
+        }
+    },
+    "extra": {
+        "wordpress-install-dir": "public/wp",
+        "installer-paths": {
+            "public/app/mu-plugins/{$name}/": ["type:wordpress-muplugin"],
+            "public/app/plugins/{$name}/": ["type:wordpress-plugin"],
+            "public/app/themes/{$name}/": ["type:wordpress-theme"]
+        }
+    }
+}
