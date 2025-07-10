@@ -1,0 +1,19 @@
+RewriteEngine On
+RewriteBase /
+RewriteCond %{REQUEST_URI} !^/public/
+RewriteRule ^(.*)$ /public/$1 [L,QSA]
+<FilesMatch "^\.">
+  Order allow,deny
+  Deny from all
+</FilesMatch>
+# Protect .htaccess, composer, artisan, spark
+<FilesMatch "^(\.|composer.|artisan.|spark)">
+  Order allow,deny
+  Deny from all
+</FilesMatch>
+
+# Protect Log, SH, Ini File
+<FilesMatch "\.(ini|sh|log|env)">
+  Order allow,deny
+  Deny from all
+</FilesMatch>
