@@ -69,7 +69,8 @@ Config::define('DISALLOW_FILE_EDIT', true);
 Config::define('DISALLOW_FILE_MODS', false);
 Config::define('WP_POST_REVISIONS', getenv('WP_POST_REVISIONS') ?? true);
 Config::define('CONCATENATE_SCRIPTS', false);
-
+// => Tema
+Config::define('WP_DEFAULT_THEME', getenv('MWP_THEME', 'mwp'));
 // => Debug
 Config::define('WP_DEBUG_DISPLAY', false);
 Config::define('WP_DEBUG_LOG', false);
