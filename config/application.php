@@ -4,6 +4,7 @@ $base_url = dirname(__DIR__);
 $site_url = $base_url . '/public';
 
 if (file_exists($base_url . '/.env')) {
+    /*
     $env_files = file_exists($base_url . '/.env.local')
         ? ['.env', '.env.local']
         : ['.env'];
@@ -12,7 +13,8 @@ if (file_exists($base_url . '/.env')) {
         ->addAdapter(Dotenv\Repository\Adapter\PutenvAdapter::class)
         ->immutable()
         ->make();
-    $dotenv = Dotenv\Dotenv::create($repository, $base_url, $env_files, false);
+    */
+    $dotenv = Dotenv\Dotenv::create($base_url, false);
     $dotenv->load();
     $dotenv->required(['WP_HOME', 'WP_SITEURL']);
     if (!getenv('DATABASE_URL')) {
