@@ -26,8 +26,12 @@ if (!getenv('WP_ENVIRONMENT_TYPE') && in_array(WP_ENV, ['production', 'staging',
     Config::define('WP_ENVIRONMENT_TYPE', WP_ENV);
 }
 
+/*
 Config::define('WP_HOME', getenv('WP_HOME'));
 Config::define('WP_SITEURL', getenv('WP_SITEURL'));
+*/
+Config::define( 'WP_HOME', 'https://' . $_SERVER['HTTP_HOST']);
+Config::define( 'WP_SITEURL', 'https://' . $_SERVER['HTTP_HOST']);
 
 Config::define('CONTENT_DIR', '/app');
 Config::define('WP_CONTENT_DIR', $site_url . Config::get('CONTENT_DIR'));
